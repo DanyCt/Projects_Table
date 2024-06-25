@@ -145,6 +145,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Button1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Purchas"/>
       </Properties>
       <Events>
@@ -153,6 +156,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Button2">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sale"/>
       </Properties>
       <Events>
@@ -168,7 +174,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="Value_ToT">
       <Properties>
-        <Property name="text" type="java.lang.String" value="1000000"/>
+        <Property name="text" type="java.lang.String" value="100"/>
       </Properties>
     </Component>
   </SubComponents>

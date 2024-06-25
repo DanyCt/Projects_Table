@@ -121,6 +121,7 @@ public class Tables extends javax.swing.JFrame {
             }
         });
 
+        Button1.setBackground(new java.awt.Color(255, 255, 255));
         Button1.setText("Purchas");
         Button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +129,7 @@ public class Tables extends javax.swing.JFrame {
             }
         });
 
+        Button2.setBackground(new java.awt.Color(255, 255, 255));
         Button2.setText("Sale");
         Button2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +139,7 @@ public class Tables extends javax.swing.JFrame {
 
         jLabel1.setText("TOTAL $ ");
 
-        Value_ToT.setText("1000000");
+        Value_ToT.setText("100");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
