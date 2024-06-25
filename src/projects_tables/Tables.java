@@ -3,38 +3,72 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package projects_tables;
+import java.util.Random;
 import javax.swing.table.DefaultTableModel;
- import java.util.Random;
-/**
- *
- * @author User
- */
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.awt.Color;
+import javax.swing.table.JTableHeader;
+import javax.swing.UIManager;
+
+
+
 public class Tables extends javax.swing.JFrame {
- DefaultTableModel dtm = new  DefaultTableModel();
-    /**
-     * Creates new form Tables
-     */
+  private DefaultTableModel aux;
+   private Object[] user = new Object[4];  
+ private DefaultTableModel titles = new  DefaultTableModel();
+  private Random random = new Random();
+ private double totalAmount = 1000;
+ 
+ 
     public Tables() {
-     
+        
         initComponents();
+        //Genera por medio de String valores como los nombres que va contener los campos de la tabla
         String [] title = new String []{"ID","TYPE","DATE","AMOUNT"};
-        dtm.setColumnIdentifiers(title);
-        Table1.setModel(dtm);
+         titles.setColumnIdentifiers(title);
+        Table1.setModel(titles);
+        
+        
+        // Cambiar color de fondo de la tabla
+        Table1.setBackground(Color.WHITE);
+        
+        // Cambiar color de fondo de los botones
+        Button1.setBackground(Color.MAGENTA);
+        Button2.setBackground(Color.MAGENTA);
+        
+        // Cambiar color de fondo de los títulos de la tabla
+        JTableHeader header = Table1.getTableHeader();
+        header.setBackground(Color.MAGENTA);
+        
+        // Cambiar el color de texto para mejor visibilidad
+        header.setForeground(Color.BLACK); 
+        
+        
+        setLocationRelativeTo(null);
+        aux = (DefaultTableModel)Table1.getModel();
+         
     }
     
-//SUMA DE TODAAS LAS VENTAS MENOS  LAS COMPRAS DE TODAS LAS COMPRAS EL MONTO INICIAL EMPEZABA CON 100,00
-    void Purchas(){
-        dtm.addRow(new Object [] {
-        jTextField1.getText()
-        
-        });    
-    }   
- 
-   
-
-
-  
+    //LocalDate proporciona para las fechas, horas, manipular muchos metodos 
+    //formatter para imprimir y analizar objetos de fecha y hora
+    private String DateTime() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd   HH:mm");
+        return now.format(formatter);
+    }
     
+    
+    // Se usa condicionales para obtener el totalAmount
+    private void TotalAmount(double amount, boolean isPurchase) {
+        if (isPurchase) {
+            totalAmount += amount;
+        } else {
+            totalAmount -= amount;
+        }
+         Value_ToT.setText(String.format("%.2f", totalAmount));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,27 +78,41 @@ public class Tables extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        textField1 = new java.awt.TextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Table1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         Button1 = new javax.swing.JButton();
         Button2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Value_ToT = new javax.swing.JLabel();
+
+        textField1.setText("textField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "F1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(Table1);
+        if (Table1.getColumnModel().getColumnCount() > 0) {
+            Table1.getColumnModel().getColumn(0).setResizable(false);
+            Table1.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         jTextField1.setText(" ");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -89,43 +137,52 @@ public class Tables extends javax.swing.JFrame {
 
         jLabel1.setText("TOTAL $ ");
 
+        Value_ToT.setText("1000000");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(Button1, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Button1)
-                                .addGap(30, 30, 30)
-                                .addComponent(Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addGap(75, 75, 75)))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                                .addGap(27, 27, 27)
+                                .addComponent(Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(310, 310, 310)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Value_ToT)
+                                        .addGap(12, 12, 12)))))))
+                .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(Value_ToT))
+                .addGap(18, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Button1)
                     .addComponent(Button2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,12 +193,24 @@ public class Tables extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
-        Purchas();
-        
+        user[0] = random.nextInt(10000); // Generar un número aleatorio para el ID
+        user[1] = "PURCHASE";// Se mustra el nombrel del boton seleccionado
+        user[2] =  DateTime(); // Genera la fecha actualmente
+        user[3] = jTextField1.getText();//Acceder al texto actual de una zona de texto
+        aux.addRow(user);//Añade una fila al final del modelo
+        TotalAmount(Double.parseDouble(jTextField1.getText()), true);//Convierte la representación en forma de cadena de un número con un estilo especificado en el número de punto flotante de precisión doble equivalente.
+        jTextField1.setText("");// Limpiar el campo de texto
     }//GEN-LAST:event_Button1ActionPerformed
 
     private void Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2ActionPerformed
-        Purchas();
+        user[0] = random.nextInt(10000); // Generar un número aleatorio para el ID
+        user[1] = "SALE"; // Se mustra el nombrel del boton seleccionado
+        user[2] =  DateTime(); // Genera la fecha actualmente
+        user[3] = jTextField1.getText(); //Acceder al texto actual de una zona de texto
+        aux.addRow(user);//Añade una fila al final del modelo
+       TotalAmount(Double.parseDouble(jTextField1.getText()), false);//Convierte la representación en forma de cadena de un número con un estilo especificado en el número de punto flotante de precisión doble equivalente.
+       jTextField1.setText("");// Limpiar el campo de texto
+   
     }//GEN-LAST:event_Button2ActionPerformed
 
     /**
@@ -183,8 +252,11 @@ public class Tables extends javax.swing.JFrame {
     private javax.swing.JButton Button1;
     private javax.swing.JButton Button2;
     private javax.swing.JTable Table1;
+    private javax.swing.JLabel Value_ToT;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }
