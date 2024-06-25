@@ -24,24 +24,24 @@ public class Tables extends javax.swing.JFrame {
     public Tables() {
         
         initComponents();
-        //Genera por medio de String valores como los nombres que va contener los campos de la tabla
+        //Generates values ​​such as the names that the table fields will contain using String    
         String [] title = new String []{"ID","TYPE","DATE","AMOUNT"};
          titles.setColumnIdentifiers(title);
         Table1.setModel(titles);
         
         
-        // Cambiar color de fondo de la tabla
+        //  Change table background color
         Table1.setBackground(Color.WHITE);
         
-        // Cambiar color de fondo de los botones
+        //  Change button background color
         Button1.setBackground(Color.MAGENTA);
         Button2.setBackground(Color.MAGENTA);
         
-        // Cambiar color de fondo de los títulos de la tabla
+        //  Change table title background color
         JTableHeader header = Table1.getTableHeader();
         header.setBackground(Color.MAGENTA);
         
-        // Cambiar el color de texto para mejor visibilidad
+        //  Change text color for better visibility
         header.setForeground(Color.BLACK); 
         
         
@@ -50,8 +50,8 @@ public class Tables extends javax.swing.JFrame {
          
     }
     
-    //LocalDate proporciona para las fechas, horas, manipular muchos metodos 
-    //formatter para imprimir y analizar objetos de fecha y hora
+    //LocalDate provides many methods for handling dates, times, and other data.
+    //Formatter for printing and parsing date and time objects
     private String DateTime() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd   HH:mm");
@@ -59,7 +59,7 @@ public class Tables extends javax.swing.JFrame {
     }
     
     
-    // Se usa condicionales para obtener el totalAmount
+     // Conditionals are used to get the totalAmount
     private void TotalAmount(double amount, boolean isPurchase) {
         if (isPurchase) {
             totalAmount += amount;
@@ -137,7 +137,7 @@ public class Tables extends javax.swing.JFrame {
 
         jLabel1.setText("TOTAL $ ");
 
-        Value_ToT.setText("1000000");
+        Value_ToT.setText("1000");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,23 +193,23 @@ public class Tables extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
-        user[0] = random.nextInt(10000); // Generar un número aleatorio para el ID
-        user[1] = "PURCHASE";// Se mustra el nombrel del boton seleccionado
-        user[2] =  DateTime(); // Genera la fecha actualmente
-        user[3] = jTextField1.getText();//Acceder al texto actual de una zona de texto
-        aux.addRow(user);//Añade una fila al final del modelo
-        TotalAmount(Double.parseDouble(jTextField1.getText()), true);//Convierte la representación en forma de cadena de un número con un estilo especificado en el número de punto flotante de precisión doble equivalente.
-        jTextField1.setText("");// Limpiar el campo de texto
+        user[0] = random.nextInt(10000); // Generate a random number for the ID 
+        user[1] = "PURCHASE"; // Display the name of the currently selected button
+        user[2] =  DateTime();  // Generate the current date
+        user[3] = jTextField1.getText(); // Access the current text in a text box
+        aux.addRow(user); // Add a row to the end of the model
+        TotalAmount(Double.parseDouble(jTextField1.getText()), true);// Convert the string representation of a number with a specified style to the equivalent double-precision floating-point number.
+        jTextField1.setText(""); // Clear the text field
     }//GEN-LAST:event_Button1ActionPerformed
 
     private void Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button2ActionPerformed
-        user[0] = random.nextInt(10000); // Generar un número aleatorio para el ID
-        user[1] = "SALE"; // Se mustra el nombrel del boton seleccionado
-        user[2] =  DateTime(); // Genera la fecha actualmente
-        user[3] = jTextField1.getText(); //Acceder al texto actual de una zona de texto
-        aux.addRow(user);//Añade una fila al final del modelo
-       TotalAmount(Double.parseDouble(jTextField1.getText()), false);//Convierte la representación en forma de cadena de un número con un estilo especificado en el número de punto flotante de precisión doble equivalente.
-       jTextField1.setText("");// Limpiar el campo de texto
+        user[0] = random.nextInt(10000); // Generate a random number for the ID 
+        user[1] = "SALE";  // Display the name of the currently selected button
+        user[2] =  DateTime();  // Generate the current date
+        user[3] = jTextField1.getText(); // Access the current text in a text box
+        aux.addRow(user);// Add a row to the end of the model
+       TotalAmount(Double.parseDouble(jTextField1.getText()), false);// Convert the string representation of a number with a specified style to the equivalent double-precision floating-point number.
+       jTextField1.setText("");// Clear the text field
    
     }//GEN-LAST:event_Button2ActionPerformed
 
